@@ -421,6 +421,12 @@
             event.preventDefault();
             formMessage.textContent = '';
 
+            if (!form.checkValidity()) {
+                form.reportValidity();
+                formMessage.textContent = 'Please enter a valid email address and complete all required fields.';
+                return;
+            }
+
             const fullName = document.getElementById('full-name').value.trim();
             const email = document.getElementById('email').value.trim();
             const phone = document.getElementById('phone').value.trim();
